@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-function Formulario() {
+function Formulario(props) {
 
     /* *** Utilizar useState con 3 states (Hooks) *** */
     // const [this.state, this.setState] = useState();
@@ -17,12 +17,19 @@ function Formulario() {
         });
         // console.log(busqueda);
     }
+    // Cuando hacemos submit al form
+    const enviarInformacion = e => {
+        e.preventDefault();
+
+        props.consultarApiLetra(busqueda);
+    }
 
     return(
         <div className="bg-info">
             <div className="container">
                 <div className="row">
                     <form 
+                        onSubmit={enviarInformacion}
                         className="col card text-white bg-transparent  mb-5 pt-5 pb-2">
                         <fieldset>
                             <legend className="text-center">Buscador Letras Canciones</legend>
